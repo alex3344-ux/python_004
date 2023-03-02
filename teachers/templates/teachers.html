@@ -1,0 +1,9 @@
+{% extends 'layout/base.html' %}
+{% block title %}Учителя{% endblock title %}
+
+{% block content %}
+    {% for teacher in  teachers %}
+        <h2>{{ teacher.first_name }} {{ teacher.last_name }}</h2>
+
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block title %}
+    Учитель
+{% endblock title %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row-fluid">
+        <div class="col-12 text-center">
+    <table >
+        <tr>
+            <td colspan="3">
+                {% if teachers.image %}
+                    <img class="img-fluid" src="{{ teachers.image.url }}" alt="" width="400">
+                {% else %}
+                    <img class="img-fluid" src="{% static 'img/about.jpg' %}" alt="" width="400">
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="text-center">{{ teachers.first_name }} {{ teachers.last_name }} </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ teachers.email }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                {{ teachers.phone }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a class="btn btn-primary" href="{% url 'teachers_list' %}"> Обратно </a>
+            </td>
+
+            <td>
+                <a class="btn btn-info" href="{% url 'teachers_update' teachers.pk %}"> Изменить </a>
+            </td>
+
+            <td>
+                <a class="btn btn-danger" href="{% url 'teachers_delete' teachers.pk %}"> Удалить </a>
+            </td>
+        </tr>
+    </table>
+    </div>
+    </div>
+</div>
+{% endblock content %}

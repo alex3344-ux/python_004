@@ -1,0 +1,36 @@
+{% extends 'layout/base.html' %} 
+{% block title %} Отзывы {% endblock title %}
+{% block content %}
+<table class="mb-3 mt-3 table table-info table-striped">
+  <thead>
+    <th>№</th>
+    <th>Фамилия</th>
+    <th>Имя</th>
+    <th>Фото</th>
+    <th>Телефон</th>
+    <th>Электронная почта</th>
+  </thead>
+  <tbody>
+    {% for teacher_item in teachers %}
+    <tr>
+      <td>
+        <a
+          href="{% url 'teachers:teachers_update' teacher_item.pk %}"
+          >{{ teacher_item.pk }}</a
+        >
+      </td>
+      <td>{{ teacher_item.last_name }}</td>
+      <td>{{ teacher_item.first_name }}</td>
+      <td><img class="border rounded-circle p-2 mx-auto mb-3" src="{{ teacher_item.image }}"></td>
+      <td>{{ teacher_item.phone }}</td>
+      <td>{{ teacher_item.email }}</td>
+
+
+    </tr>
+
+    {% endfor %}
+    <a href="{% url 'teachers:teachers_list' %}" class="btn btn-primary">Создать</a>
+  </tbody>
+</table>
+
+{% endblock content %}
